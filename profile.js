@@ -111,6 +111,19 @@ function generateStars(stars) {
     return starIcons;
 }
 
+// Toggle for hamburger menu
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
+console.log(hamburger, navLinks);  // Check if these elements exist in the page
+
+
+if (hamburger && navLinks) {
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('nav-active');
+    });
+}
+
+
 // Initialize slider functionality
 function initCustomTestimonialSlider() {
     const testimonials = document.querySelectorAll('.custom-testimonial-item');

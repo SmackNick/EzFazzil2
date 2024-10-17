@@ -1,10 +1,11 @@
 /* Variables de color y estilos básicos */
 :root {
-    --primary-color: #4a90e2;
+    --primary-color: #81b3ed;
     --secondary-color: #2c3e50;
     --accent-color: #e74c3c;
     --light-color: #ecf0f1;
     --dark-color: #34495e;
+    --hamb-menu:#616264;
 }
 
 /* Estilos globales */
@@ -915,7 +916,9 @@ body .categories-section .btn-all-categories {
         top: 70px;
         right: 0;
         width: 100%;
-        background-color: var(--primary-color);
+        background-color: var(--hamb-menu);
+        font-size: 1.25rem;
+        padding: 3px;
     }
 
     .nav-links.nav-active {
