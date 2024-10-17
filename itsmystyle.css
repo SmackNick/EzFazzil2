@@ -607,17 +607,19 @@ p {
 }
 
 .table-section {
-    display: flex;
-    justify-content: center;
-    padding-bottom: 2rem;
+    overflow-x: auto; /* Ensure horizontal scrolling */
+    padding: 1.5rem;
+    width: 100%; /* Ensure the container spans the full width */
 }
 
 #proveedores-table {
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
     border-collapse: collapse;
     background-color: #fefefe;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    table-layout: auto; /* Allows the table to resize based on content */
+    white-space: nowrap; /* Prevent text from wrapping in table cells */
 }
 
 #proveedores-table thead {
@@ -733,29 +735,23 @@ footer .social-icons a {
 
 /* 3-column grid for supplier data */
 .info-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columns */
-    gap: 20px; /* Space between grid items */
+    display: flex;
+    flex-wrap: wrap; /* This allows items to wrap if they overflow */
+    gap: 20px; /* Add space between items */
+    justify-content: space-between; /* Ensures items are spaced evenly */
     margin: 20px 0;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    max-width: 900px; /* Adjust width as needed */
-    margin: 20px auto; /* Center the container */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for better appearance */
 }
 
-/* Styling for each item inside the grid */
 .info-item {
-    font-size: 1.1em;
-    line-height: 1.6;
-    padding: 10px 0; /* Add spacing */
-    text-align: center; /* Center the text in each grid item */
+    flex: 1 1 calc(33% - 20px); /* Make each item take up about a third of the row on larger screens, subtracting the gap */
+    padding: 10px;
     background-color: #ffffff;
     border-radius: 6px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1); /* Subtle shadow */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    text-align: center;
+    box-sizing: border-box;
 }
+
 
 /* Label styling inside the grid items */
 .info-label {
@@ -909,7 +905,6 @@ body .categories-section .btn-all-categories {
     cursor: pointer;
 }
 
-
 /* Media Queries */
 @media (max-width: 768px) {
     .nav-links {
@@ -1044,18 +1039,20 @@ body .categories-section .btn-all-categories {
     .nav-links .nav-social-icon {
         display: none;
     }
-        .details-grid {
-            grid-template-columns: 1fr;
-        }
-    
-        .supplier-details-grid {
-            grid-template-columns: 1fr;
-        }
-    .info-grid {
-        grid-template-columns: 1fr; /* Stack grid items on smaller screens */
+    .details-grid {
+        grid-template-columns: 1fr;
     }
-    body .categories-section .categories-grid {
-        grid-template-columns: repeat(2, 1fr);
+
+    .supplier-details-grid {
+        grid-template-columns: 1fr;
+    }
+    .info-grid {
+        flex-direction: column; /* Stack items vertically */
+    }
+
+    .info-item {
+        flex: 1 1 100%; /* Full width for each item */
+        padding: 10px;
     }
 }
 
