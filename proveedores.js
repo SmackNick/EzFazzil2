@@ -154,9 +154,9 @@ function populateFilters(data) {
         }
     });
 
-    populateSelect(cityFilter, cities);
-    populateSelect(regionFilter, regions);
-    populateSelect(categoryFilter, categories);
+    populateSelect(cityFilter, cities, 'city');
+    populateSelect(regionFilter, regions, 'region');
+    populateSelect(categoryFilter, categories, 'category');
 
     console.log("Filters populated:", {
         cities: Array.from(cities),
@@ -171,8 +171,21 @@ function populateFilters(data) {
 }
 
 // Helper function to populate select elements
-function populateSelect(selectElement, options) {
-    selectElement.innerHTML = '<option value="">Todos</option>'; // Reset and add default option
+function populateSelect(selectElement, options, filterType) {
+    let defaultOption = 'Todos';
+    switch(filterType) {
+        case 'category':
+            defaultOption = 'Todas las Categorías';
+            break;
+        case 'region':
+            defaultOption = 'Todas las Regiones';
+            break;
+        case 'city':
+            defaultOption = 'Todas las Ciudades';
+            break;
+    }
+    
+    selectElement.innerHTML = `<option value="">${defaultOption}</option>`; // Reset and add default option
     options.forEach(option => {
         const optionElement = document.createElement('option');
         optionElement.value = option;
