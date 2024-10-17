@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Perfil del proveedor">
+    <title>Perfil del Proveedor</title>
+    <link rel="stylesheet" href="itsmystyle.css">
+    <!-- Include Swiper CSS -->
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+</head>
+<body>
+
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <a href="https://ezfazzil.com">
+                    <img src="Images/logoss.png" alt="Fazzil Logo" class="logo-img">
+                    <span class="logo-text">Fazzil</span>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="https://ezfazzil.com">Inicio</a></li>
+                <li><a href="categorias.html">Servicios</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li class="nav-social-icon">
+                    <a href="https://www.youtube.com/" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-youtube">
+                            <path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C19.88 4 12 4 12 4s-7.88 0-8.6.42a2.78 2.78 0 00-1.94 2A29.35 29.35 0 001 12a29.35 29.35 0 00.46 5.58 2.78 2.78 0 001.94 2c.72.42 8.6.42 8.6.42s7.88 0 8.6-.42a2.78 2.78 0 001.94-2A29.35 29.35 0 0023 12a29.35 29.35 0 00-.46-5.58z"></path>
+                            <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polygon>
+                        </svg>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.instagram.com/ezfazzil" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37a4 4 0 11-4.73-4.73 4 4 0 014.73 4.73z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+                </li>
+              </ul>
+            <div class="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Supplier Profile Section -->
+        <div class="supplier-card">
+            <div class="supplier-name" id="supplier-title" style="padding-top: 80px;"></div>
+            <div class="info-grid" id="supplier-details">
+                <!-- Supplier information will be dynamically populated here -->
+            </div>
+        </div>
+        
+        <!-- Reviews Section -->
+        <section id="supplier-reviews">
+            <h2>Últimas 5 Reseñas</h2>
+            <div class="custom-testimonial-slider">
+                <!-- Reviews will be dynamically populated here -->
+            </div>
+        </section>
+    </main>
+    
+    
+
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.youtube.com/" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-youtube">
+                    <path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C19.88 4 12 4 12 4s-7.88 0-8.6.42a2.78 2.78 0 00-1.94 2A29.35 29.35 0 001 12a29.35 29.35 0 00.46 5.58 2.78 2.78 0 001.94 2c.72.42 8.6.42 8.6.42s7.88 0 8.6-.42a2.78 2.78 0 001.94-2A29.35 29.35 0 0023 12a29.35 29.35 0 00-.46-5.58z"></path>
+                    <path d="M10 9.5L16 12 10 14.5V9.5z"></path>
+                </svg>
+            </a>
+            <a href="https://www.instagram.com/ezfazzil" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37a4 4 0 11-4.73-4.73 4 4 0 014.73 4.73z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+            </a>
+            <a href="https://x.com/ezfazzil" target="_blank" rel="noopener noreferrer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 462.799" fill="none" stroke="currentColor" stroke-width="24">
+                    <path d="M403.229 0h78.506L310.219 196.04 512 462.799H354.002L230.261 301.007 88.669 462.799h-78.56l183.455-209.683L0 0h161.999l111.856 147.88L403.229 0zm-27.556 415.805h43.505L138.363 44.527h-46.68l283.99 371.278z"/>
+                </svg>
+            </a>
+        </div>
+        <div class="container">
+            <p>&copy; 2024 Fazzil. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+<!-- Include Swiper JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <script src="profile.js"></script>
+</body>
+</html>
