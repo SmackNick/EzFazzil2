@@ -82,7 +82,9 @@ fetch(apiUrl)
                 filterSuppliers();
             } else {
                 console.log("No category filter, showing all suppliers");
-                filteredData = suppliersData;
+                filteredData = [...suppliersData];
+                currentPage = 1;
+                totalPages = Math.ceil(filteredData.length / rowsPerPage);
                 displaySuppliers(filteredData, currentPage);
                 updatePagination();
             }
@@ -201,24 +203,28 @@ const filterSuppliers = debounce(() => {
 
     console.log("Filtering with - City:", cityFilter, "Region:", regionFilter, "Category:", categoryFilter, "Search:", searchQuery);
 
-    filteredData = suppliersData.filter(row => {
-        if (row.length < 6) {
-            console.warn("Row has insufficient data:", row);
-            return false;
-        }
-        const matchesCity = normalizeString(row[3]).includes(normalizeString(cityFilter)) || cityFilter === '';
-        const matchesRegion = normalizeString(row[4]).includes(normalizeString(regionFilter)) || regionFilter === '';
-        const matchesCategory = normalizeString(row[5]).includes(normalizeString(categoryFilter)) || categoryFilter === '';
-        const matchesSearch = row.slice(1, 7).some(cell => normalizeString(cell).includes(normalizeString(searchQuery)));
+    if (!cityFilter && !regionFilter && !categoryFilter && !searchQuery) {
+        // If all filters are empty, show all suppliers
+        filteredData = [...suppliersData];
+    } else {
+        filteredData = suppliersData.filter(row => {
+            if (row.length < 6) {
+                console.warn("Row has insufficient data:", row);
+                return false;
+            }
+            const matchesCity = normalizeString(row[3]).includes(normalizeString(cityFilter)) || cityFilter === '';
+            const matchesRegion = normalizeString(row[4]).includes(normalizeString(regionFilter)) || regionFilter === '';
+            const matchesCategory = normalizeString(row[5]).includes(normalizeString(categoryFilter)) || categoryFilter === '';
+            const matchesSearch = row.slice(1, 7).some(cell => normalizeString(cell).includes(normalizeString(searchQuery)));
 
-        return matchesCity && matchesRegion && matchesCategory && matchesSearch;
-    });
+            return matchesCity && matchesRegion && matchesCategory && matchesSearch;
+        });
+    }
 
     console.log("Filtered data:", filteredData);
 
     currentPage = 1;
     totalPages = Math.ceil(filteredData.length / rowsPerPage);
-    showAllSuppliers = false;
     displaySuppliers(filteredData, currentPage);
     updatePagination();
 }, 300);
@@ -233,7 +239,7 @@ document.querySelector('.clear-filters').addEventListener('click', () => {
     document.querySelector('#filter-category').value = '';
     document.querySelector('#search-bar').value = '';
 
-    filteredData = suppliersData;
+    filteredData = [...suppliersData]; // Use spread operator to create a new array
     currentPage = 1;
     totalPages = Math.ceil(filteredData.length / rowsPerPage);
     displaySuppliers(filteredData, currentPage);
@@ -278,13 +284,11 @@ const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
 console.log(hamburger, navLinks);  // Check if these elements exist in the page
 
-
 if (hamburger && navLinks) {
     hamburger.addEventListener('click', () => {
         navLinks.classList.toggle('nav-active');
     });
 }
-
 
 // Function to display error messages
 function displayErrorMessage(message) {
